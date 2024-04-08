@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
-
 class Blog(models.Model):
     title = models.CharField(max_length=30, verbose_name='title', unique=True)
     body = models.TextField(verbose_name='text')
@@ -31,7 +30,6 @@ class Blog(models.Model):
         verbose_name = 'blog'
         verbose_name_plural = 'blogs'
 
-
 class Category(models.Model):
     title = models.CharField(max_length=25, verbose_name='Category title', unique=True)
     slug = models.SlugField(blank=True, verbose_name='Aslag',
@@ -44,10 +42,10 @@ class Category(models.Model):
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.slug = slugify(self.title)
         super(Category, self).save()
-
     class Meta:
         verbose_name = 'Grouping'
         verbose_name_plural = 'categories'
+
 
 
 class Tag(models.Model):

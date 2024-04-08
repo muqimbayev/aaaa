@@ -11,19 +11,16 @@ class BlogAdmin(admin.ModelAdmin):
     ordering = ('created_at',)
     list_filter = ('author', 'category', 'situation')
 
-
 class CommentAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
     list_display = ('name', 'blog', 'created_at', 'text')
     list_filter = ('blog',)
-
 
 class CategoryAdmin(admin.ModelAdmin):
     readonly_fields = ('slug', 'date')
     list_display = ('title', 'date')
     ordering = ('-date',)
     search_fields = ('title',)
-
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
